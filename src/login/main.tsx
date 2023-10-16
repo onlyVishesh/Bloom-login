@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../footer/main';
+import leftImage from '../login/images/left.png';
+import blossomImage from '../login/images/4388667 1.png';
 
 import styled, { createGlobalStyle } from 'styled-components';
 
@@ -19,7 +21,7 @@ const MainBody = styled.div`
 const Left = styled.div`
   width: 55vw;
   height: 80vh;
-  background: url("src/login/images/left.png") no-repeat;
+  background: url(${leftImage}) no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -78,7 +80,7 @@ const Right = styled.div`
   padding: 100px 70px;
 
   @media only screen and (max-width: 600px) {
-    background: url("src/login/images/left.png") no-repeat;
+    background: url(${leftImage}) no-repeat;
     background-size: cover;
     width:100vw;
   }
@@ -288,6 +290,11 @@ width: max-content;
   text-decoration: none;
   border: none;
 
+  &.active {
+    background-color: #fff;
+     color: #c4c4c4;
+  }
+
   @media only screen and (min-width: 601px) and (max-width: 768px) {
 
       padding: 5px 20px;
@@ -318,6 +325,12 @@ const SignupButton = styled.button`
   font-weight: 700;
   text-decoration: none;
   border: none;
+
+  &.active {
+    background-color: #f1f1f1; 
+    color: #000;
+  }
+
   @media only screen and (min-width: 601px) and (max-width: 768px) {
 
 
@@ -410,6 +423,8 @@ const Forgot = styled.p`
 `;
 
 const MyComponent: React.FC = () => {
+  const [isLoginView, setLoginView] = useState(true);
+  
   return (
     <div>
       <GlobalStyles />
@@ -419,7 +434,7 @@ const MyComponent: React.FC = () => {
         </Left>
         <Right>
         <Figure>
-            <Image src="src/login/images/4388667 1.png" alt="blossom" />
+            <Image src={blossomImage} alt="blossom" />
             <Figcaption>Blossom Labs</Figcaption>
           </Figure>
           <DirectLogin>Express login via Google and Facebook</DirectLogin>
@@ -445,13 +460,39 @@ const MyComponent: React.FC = () => {
           </LoginBtns>
           <hr />
           <TabBtn>
-            <LoginButton className="login">Log In</LoginButton>
-            <SignupButton className="signup">Sign up</SignupButton>
-          </TabBtn>
-          <EmailInput type="text" placeholder="email or username" />
-          <PasswordInput type="password" placeholder="password" />
-          <LoginBtn>Log in</LoginBtn>
-          <Forgot>Forgot password?</Forgot>
+  <LoginButton
+    className={isLoginView ? '' : 'active'}
+    onClick={() => {
+      setLoginView(true);
+    }}
+  >
+    Log In
+  </LoginButton>
+  <SignupButton
+    className={isLoginView ? '' : 'active'}
+    onClick={() => {
+      setLoginView(false);
+    }}
+  >
+    Sign up
+  </SignupButton>
+</TabBtn>
+
+          {isLoginView ? (
+            <>
+              <EmailInput type="text" placeholder="email or username" />
+              <PasswordInput type="password" placeholder="password" />
+              <LoginBtn>Log in</LoginBtn>
+              <Forgot>Forgot password?</Forgot>
+            </>
+          ) : (
+            <>
+              <EmailInput type="text" placeholder="email" />
+              <EmailInput type="text" placeholder="username" />
+              <PasswordInput type="password" placeholder="password" />
+              <LoginBtn>Sign Up</LoginBtn>
+            </>
+          )}
           <hr />
         </Right>
       </MainBody>
