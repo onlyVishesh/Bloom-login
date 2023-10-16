@@ -25,6 +25,7 @@ const Left = styled.div`
   align-items: center;
   justify-content: center;
 
+  
   @media only screen and (max-width: 600px) {
     display:none;
   }
