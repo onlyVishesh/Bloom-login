@@ -75,7 +75,7 @@ const Right = styled.div`
   width: 45vw;
   height: 80vh;
   padding: 100px 70px;
-  
+
   @media only screen and (max-width: 600px) {
     background: url("./src/login/images/left.png") no-repeat;
     background-size: cover;
