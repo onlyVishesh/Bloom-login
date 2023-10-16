@@ -19,13 +19,13 @@ const MainBody = styled.div`
 const Left = styled.div`
   width: 55vw;
   height: 80vh;
-  background: url("./src/login/images/left.png") no-repeat;
+  background: url("left.png") no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  
+
   @media only screen and (max-width: 600px) {
     display:none;
   }
@@ -78,7 +78,7 @@ const Right = styled.div`
   padding: 100px 70px;
 
   @media only screen and (max-width: 600px) {
-    background: url("./src/login/images/left.png") no-repeat;
+    background: url("left.png") no-repeat;
     background-size: cover;
     width:100vw;
   }
@@ -417,7 +417,7 @@ const MyComponent: React.FC = () => {
         </Left>
         <Right>
         <Figure>
-            <Image src="./src/login/images/4388667 1.png" alt="blossom" />
+            <Image src="4388667 1.png" alt="blossom" />
             <Figcaption>Blossom Labs</Figcaption>
           </Figure>
           <DirectLogin>Express login via Google and Facebook</DirectLogin>
